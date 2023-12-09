@@ -12,7 +12,7 @@ struct PlansView: View {
         VStack{
             ZStack{
                 Rectangle()
-                    .fill(.gray)
+                    .fill(.bar)
                     .frame(width: 350, height: 200)
                     .cornerRadius(15)
                 Text("Choose Your Plan")
