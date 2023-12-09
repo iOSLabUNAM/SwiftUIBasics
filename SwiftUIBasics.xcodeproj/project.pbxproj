@@ -13,6 +13,8 @@
 		5570428D2B24D8050048C81C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428C2B24D8050048C81C /* SignUpView.swift */; };
 		5570428F2B24E50E0048C81C /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428E2B24E50E0048C81C /* RatingView.swift */; };
 		557042912B24E5220048C81C /* PlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042902B24E5220048C81C /* PlansView.swift */; };
+		557042932B24EFB00048C81C /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042922B24EFB00048C81C /* FormTextField.swift */; };
+		557042952B24F3100048C81C /* RequirementText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042942B24F3100048C81C /* RequirementText.swift */; };
 		5598D3142B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */; };
 		5598D3162B23DF6D00A6AFD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3152B23DF6D00A6AFD3 /* ContentView.swift */; };
 		5598D3182B23DF6F00A6AFD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5598D3172B23DF6F00A6AFD3 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		5570428C2B24D8050048C81C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		5570428E2B24E50E0048C81C /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
 		557042902B24E5220048C81C /* PlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansView.swift; sourceTree = "<group>"; };
+		557042922B24EFB00048C81C /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
+		557042942B24F3100048C81C /* RequirementText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequirementText.swift; sourceTree = "<group>"; };
 		5598D3102B23DF6D00A6AFD3 /* SwiftUIBasics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIBasics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIBasicsApp.swift; sourceTree = "<group>"; };
 		5598D3152B23DF6D00A6AFD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -77,6 +81,8 @@
 			isa = PBXGroup;
 			children = (
 				5598D3212B2403CE00A6AFD3 /* CircularImage.swift */,
+				557042922B24EFB00048C81C /* FormTextField.swift */,
+				557042942B24F3100048C81C /* RequirementText.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -195,6 +201,8 @@
 				30CA734E2B24AE460025B2EB /* SymbolsAnimations.swift in Sources */,
 				5598D3142B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift in Sources */,
 				5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */,
+				557042952B24F3100048C81C /* RequirementText.swift in Sources */,
+				557042932B24EFB00048C81C /* FormTextField.swift in Sources */,
 				557042892B24CB310048C81C /* ProfileListView.swift in Sources */,
 				557042912B24E5220048C81C /* PlansView.swift in Sources */,
 				5570428D2B24D8050048C81C /* SignUpView.swift in Sources */,
