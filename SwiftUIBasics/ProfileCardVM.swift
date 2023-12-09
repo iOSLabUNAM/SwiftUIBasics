@@ -14,7 +14,7 @@ class ProfileCardVM {
     var name: String = ""
     var bio: String = ""
     var followers: Int = 0
-    
+
     init(image: String, name: String, bio: String, followers: Int) {
         self.image = image
         self.name = name

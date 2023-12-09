@@ -16,7 +16,7 @@ struct CircularImage: View {
             .aspectRatio(contentMode: .fit)
             .frame(width: size)
             .clipShape(.circle)
-            .overlay{
+            .overlay {
                 Circle()
                     .stroke(.white, lineWidth: 4)
             }

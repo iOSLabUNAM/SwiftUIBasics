@@ -9,9 +9,9 @@ import SwiftUI
 
 struct ProfileCardView: View {
     var vm: ProfileCardVM
-    
+
     var body: some View {
-        HStack{
+        HStack {
             CircularImage(imageName: vm.image)
             VStack(alignment: .leading) {
                 Text(vm.name)
@@ -21,7 +21,7 @@ struct ProfileCardView: View {
                 Text(vm.bio)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
-                HStack() {
+                HStack {
                     Button("Follow") {
                         vm.followers += 1
                     }

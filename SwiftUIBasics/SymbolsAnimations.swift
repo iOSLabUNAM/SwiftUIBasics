@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SymbolsAnimations: View {
     @State private var animate = false
-    
+
     var body: some View {
         VStack {
             Image(systemName: animate ? "checkmark.circle" : "faceid")
