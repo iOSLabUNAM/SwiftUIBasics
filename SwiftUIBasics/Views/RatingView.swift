@@ -11,21 +11,26 @@ struct RatingView: View {
     @State private var rating = 0
     
     var body: some View {
-        HStack {
-            ForEach(1...5, id: \.self) { index in
-               Image(systemName: index <= self.rating ? "star.fill" : "star")
-                   .resizable()
-                   .frame(width: 30, height: 30)
-                   .foregroundColor(.yellow)
-                   .onTapGesture {
-                       if index == self.rating {
-                           self.rating = 0
-                       } else {
-                           self.rating = index
+        VStack {
+            Text("Rating")
+                .font(.title)
+                .bold()
+            HStack {
+                ForEach(1...5, id: \.self) { index in
+                   Image(systemName: index <= self.rating ? "star.fill" : "star")
+                       .resizable()
+                       .frame(width: 30, height: 30)
+                       .foregroundColor(.yellow)
+                       .onTapGesture {
+                           if index == self.rating {
+                               self.rating = 0
+                           } else {
+                               self.rating = index
+                           }
                        }
-                   }
+               }
            }
-       }
+        }
        .padding()
     }
 }
