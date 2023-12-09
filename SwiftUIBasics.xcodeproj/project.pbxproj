@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		30CA734E2B24AE460025B2EB /* SymbolsAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */; };
+		557042892B24CB310048C81C /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042882B24CB310048C81C /* ProfileListView.swift */; };
+		5570428B2B24D2F90048C81C /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428A2B24D2F90048C81C /* TabBarView.swift */; };
+		5570428D2B24D8050048C81C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428C2B24D8050048C81C /* SignUpView.swift */; };
+		5570428F2B24E50E0048C81C /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428E2B24E50E0048C81C /* RatingView.swift */; };
+		557042912B24E5220048C81C /* PlansView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042902B24E5220048C81C /* PlansView.swift */; };
 		5598D3142B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */; };
 		5598D3162B23DF6D00A6AFD3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3152B23DF6D00A6AFD3 /* ContentView.swift */; };
 		5598D3182B23DF6F00A6AFD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5598D3172B23DF6F00A6AFD3 /* Assets.xcassets */; };
@@ -19,6 +24,11 @@
 
 /* Begin PBXFileReference section */
 		30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsAnimations.swift; sourceTree = "<group>"; };
+		557042882B24CB310048C81C /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
+		5570428A2B24D2F90048C81C /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
+		5570428C2B24D8050048C81C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		5570428E2B24E50E0048C81C /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		557042902B24E5220048C81C /* PlansView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlansView.swift; sourceTree = "<group>"; };
 		5598D3102B23DF6D00A6AFD3 /* SwiftUIBasics.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIBasics.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIBasicsApp.swift; sourceTree = "<group>"; };
 		5598D3152B23DF6D00A6AFD3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,6 +50,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		557042852B24CA790048C81C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		557042862B24CA860048C81C /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				557042872B24CAA70048C81C /* Components */,
+				5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */,
+				30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */,
+				557042882B24CB310048C81C /* ProfileListView.swift */,
+				5570428A2B24D2F90048C81C /* TabBarView.swift */,
+				5570428C2B24D8050048C81C /* SignUpView.swift */,
+				5570428E2B24E50E0048C81C /* RatingView.swift */,
+				557042902B24E5220048C81C /* PlansView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		557042872B24CAA70048C81C /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				5598D3212B2403CE00A6AFD3 /* CircularImage.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		5598D3072B23DF6D00A6AFD3 = {
 			isa = PBXGroup;
 			children = (
@@ -59,12 +100,10 @@
 		5598D3122B23DF6D00A6AFD3 /* SwiftUIBasics */ = {
 			isa = PBXGroup;
 			children = (
+				557042852B24CA790048C81C /* ViewModels */,
+				557042862B24CA860048C81C /* Views */,
 				5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */,
 				5598D3152B23DF6D00A6AFD3 /* ContentView.swift */,
-				5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */,
-				5598D3212B2403CE00A6AFD3 /* CircularImage.swift */,
-				5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */,
-				30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */,
 				5598D3172B23DF6F00A6AFD3 /* Assets.xcassets */,
 				5598D3192B23DF6F00A6AFD3 /* Preview Content */,
 			);
@@ -149,11 +188,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5570428B2B24D2F90048C81C /* TabBarView.swift in Sources */,
 				5598D3162B23DF6D00A6AFD3 /* ContentView.swift in Sources */,
 				5598D3262B2404FC00A6AFD3 /* ProfileCardVM.swift in Sources */,
+				5570428F2B24E50E0048C81C /* RatingView.swift in Sources */,
 				30CA734E2B24AE460025B2EB /* SymbolsAnimations.swift in Sources */,
 				5598D3142B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift in Sources */,
 				5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */,
+				557042892B24CB310048C81C /* ProfileListView.swift in Sources */,
+				557042912B24E5220048C81C /* PlansView.swift in Sources */,
+				5570428D2B24D8050048C81C /* SignUpView.swift in Sources */,
 				5598D3222B2403CF00A6AFD3 /* CircularImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
