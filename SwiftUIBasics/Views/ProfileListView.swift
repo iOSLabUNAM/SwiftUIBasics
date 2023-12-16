@@ -16,7 +16,7 @@ struct Profile: Codable, Identifiable {
 struct ProfileCellView: View {
     let profile: Profile
     var body: some View {
-        HStack{
+        HStack {
             Image(systemName: "person.crop.circle")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
@@ -39,7 +39,7 @@ struct ProfileCellView: View {
 struct ProfileListView: View {
     let profiles: [Profile]
     var body: some View {
-        NavigationView{
+        NavigationView {
             List(profiles) { profile in
                 NavigationLink {
                     Text(profile.name)
