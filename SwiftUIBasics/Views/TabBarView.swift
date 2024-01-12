@@ -34,7 +34,6 @@ struct ListView: View {
     }
 }
 
-
 struct SettingsView: View {
     @State var vibrateOnRing: Bool = false
     var body: some View {
