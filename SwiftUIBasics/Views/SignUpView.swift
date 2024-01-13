@@ -23,6 +23,8 @@ class SignUpViewModel: ObservableObject {
     @Published var isValidPasswordNumber: Bool = false
     @Published var isValidPasswordMatch: Bool = false
     @Published var isValid: Bool = false
+    @Published var isValidPre: Bool = false
+
 
     private var cancelableSet: Set<AnyCancellable> = []
 
@@ -104,8 +106,15 @@ class SignUpViewModel: ObservableObject {
             }
             .assign(to: \.isValidPasswordMatch, on: self)
             .store(in: &cancelableSet)
+        
+        Publishers.CombineLatest4($isValidPasswordNumber, $isValidPasswordSymbol, $isValidPasswordLowerCase, $isValidPasswordUpperCase)
+            .map { (a, b, c, d) in
+                return a && b && c && d
+            }
+            .assign(to: \.isValidPre, on: self)
+            .store(in: &cancelableSet)
 
-        Publishers.CombineLatest4($isValidEmailLength, $isValidPasswordLength, $isValidPasswordUpperCase, $isValidPasswordMatch)
+        Publishers.CombineLatest4($isValidEmailLength, $isValidPasswordLength, $isValidPre, $isValidPasswordMatch)
             .map { (a, b, c, d) in
                 return a && b && c && d
             }
