@@ -20,6 +20,7 @@ struct FormTextField: View {
                     .padding(.horizontal)
             } else {
                 TextField(name, text: $value)
+                    .keyboardType(.emailAddress)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .padding(.horizontal)
             }
