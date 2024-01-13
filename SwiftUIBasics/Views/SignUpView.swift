@@ -10,47 +10,35 @@ import Combine
 
 class SignUpViewModel: ObservableObject {
     // inputs
-    @Published var username: String = ""
+    @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirm: String = ""
-
+    
     // outputs
-    @Published var isValidUsernameLength: Bool = false
-    @Published var isValidPasswordLength: Bool = false
-    @Published var isValidPasswordUpperCase: Bool = false
+    @Published var isValidEmail: Bool = false
+    @Published var isValidPassword: Bool = false
     @Published var isValidPasswordMatch: Bool = false
     @Published var isValid: Bool = false
 
     private var cancelableSet: Set<AnyCancellable> = []
 
     init() {
-        $username
+        $email
             .receive(on: RunLoop.main)
-            .map { username in
-                return username.count >= 4
+            .map { email in
+                let emailRegex = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$"
+                return email.range(of: emailRegex, options: .regularExpression) != nil
             }
-            .assign(to: \.isValidUsernameLength, on: self)
+            .assign(to: \.isValidEmail, on: self)
             .store(in: &cancelableSet)
+
 
         $password
             .receive(on: RunLoop.main)
             .map { password in
-                return password.count >= 8
+                return self.isValidPassword(password)
             }
-            .assign(to: \.isValidPasswordLength, on: self)
-            .store(in: &cancelableSet)
-
-        $password
-            .receive(on: RunLoop.main)
-            .map { password in
-                let pattern = "[A-Z]"
-                if let _ = password.range(of: pattern, options: .regularExpression) {
-                    return true
-                } else {
-                    return false
-                }
-            }
-            .assign(to: \.isValidPasswordUpperCase, on: self)
+            .assign(to: \.isValidPassword, on: self)
             .store(in: &cancelableSet)
 
         Publishers.CombineLatest($password, $passwordConfirm)
@@ -61,12 +49,30 @@ class SignUpViewModel: ObservableObject {
             .assign(to: \.isValidPasswordMatch, on: self)
             .store(in: &cancelableSet)
 
-        Publishers.CombineLatest4($isValidUsernameLength, $isValidPasswordLength, $isValidPasswordUpperCase, $isValidPasswordMatch)
-            .map { (a, b, c, d) in
-                return a && b && c && d
+        Publishers.CombineLatest3($isValidEmail, $isValidPassword, $isValidPasswordMatch)
+            .map { (isValidEmail, isValidPassword, isValidPasswordMatch) in
+                return isValidEmail && isValidPassword && isValidPasswordMatch
             }
             .assign(to: \.isValid, on: self)
             .store(in: &cancelableSet)
+    }
+
+    private func isValidPassword(_ password: String) -> Bool {
+        let pattern = "[A-Z]"
+        let upperCase = ".*[A-Z]+.*"
+        let lowerCase = ".*[a-z]+.*"
+        let symbol = ".*[!@#$%^&*()_+\\-=\\[\\]{};':\",.<>?]+.*"
+        let number = ".*[0-9]+.*"
+
+        if let _ = password.range(of: pattern, options: .regularExpression) {
+            return password.count >= 8 &&
+                   password.range(of: upperCase, options: .regularExpression) != nil &&
+                   password.range(of: lowerCase, options: .regularExpression) != nil &&
+                   password.range(of: symbol, options: .regularExpression) != nil &&
+                   password.range(of: number, options: .regularExpression) != nil
+        } else {
+            return false
+        }
     }
 }
 
@@ -80,13 +86,14 @@ struct SignUpView: View {
                 .bold()
                 .foregroundStyle(.maryBlue)
                 .padding(.bottom, 30)
-            FormTextField(name: "Username", value: $vm.username)
-            RequirementText(text: "A minimum of 4 characters", isValid: vm.isValidUsernameLength)
+            FormTextField(name: "Email", value: $vm.email)
+                .keyboardType(.emailAddress)
+                .autocapitalization(.none)
+            RequirementText(text: "Enter a valid email", isValid: vm.isValidEmail)
                 .padding()
             FormTextField(name: "Password", value: $vm.password, isSecure: true)
             VStack {
-                RequirementText(text: "A minimum of 8 characters", isValid: vm.isValidPasswordLength)
-                RequirementText(text: "One uppercase letter", isValid: vm.isValidPasswordUpperCase)
+                RequirementText(text: "A minimum of 8 characters and includes uppercase, lowercase, symbols, and numbers", isValid: vm.isValidPassword)
             }
             .padding()
             FormTextField(name: "Confirm Password", value: $vm.passwordConfirm, isSecure: true)
@@ -104,7 +111,6 @@ struct SignUpView: View {
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .background(vm.isValid ? .maryBlue :.turquoise)
-                    // .background(LinearGradient(gradient: Gradient(colors: [.turquoise, .maryBlue]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
                     .padding(.horizontal)
             }
