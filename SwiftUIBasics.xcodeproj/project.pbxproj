@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		30CA734E2B24AE460025B2EB /* SymbolsAnimations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */; };
+		5544EF492B52003C0070BA56 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544EF482B52003C0070BA56 /* AuthenticationViewModel.swift */; };
+		5544EF4B2B5202A60070BA56 /* TestSignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544EF4A2B5202A60070BA56 /* TestSignUp.swift */; };
+		5544EF4D2B5204A00070BA56 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5544EF4C2B5204A00070BA56 /* SignUpViewModel.swift */; };
 		557042892B24CB310048C81C /* ProfileListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 557042882B24CB310048C81C /* ProfileListView.swift */; };
 		5570428B2B24D2F90048C81C /* TabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428A2B24D2F90048C81C /* TabBarView.swift */; };
 		5570428D2B24D8050048C81C /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5570428C2B24D8050048C81C /* SignUpView.swift */; };
@@ -24,6 +27,9 @@
 
 /* Begin PBXFileReference section */
 		30CA734D2B24AE460025B2EB /* SymbolsAnimations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolsAnimations.swift; sourceTree = "<group>"; };
+		5544EF482B52003C0070BA56 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		5544EF4A2B5202A60070BA56 /* TestSignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSignUp.swift; sourceTree = "<group>"; };
+		5544EF4C2B5204A00070BA56 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		557042882B24CB310048C81C /* ProfileListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileListView.swift; sourceTree = "<group>"; };
 		5570428A2B24D2F90048C81C /* TabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarView.swift; sourceTree = "<group>"; };
 		5570428C2B24D8050048C81C /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
@@ -54,6 +60,8 @@
 			isa = PBXGroup;
 			children = (
 				5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */,
+				5544EF482B52003C0070BA56 /* AuthenticationViewModel.swift */,
+				5544EF4C2B5204A00070BA56 /* SignUpViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -77,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				5598D3212B2403CE00A6AFD3 /* CircularImage.swift */,
+				5544EF4A2B5202A60070BA56 /* TestSignUp.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -188,10 +197,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5544EF492B52003C0070BA56 /* AuthenticationViewModel.swift in Sources */,
 				5570428B2B24D2F90048C81C /* TabBarView.swift in Sources */,
 				5598D3162B23DF6D00A6AFD3 /* ContentView.swift in Sources */,
 				5598D3262B2404FC00A6AFD3 /* ProfileCardVM.swift in Sources */,
 				5570428F2B24E50E0048C81C /* RatingView.swift in Sources */,
+				5544EF4B2B5202A60070BA56 /* TestSignUp.swift in Sources */,
+				5544EF4D2B5204A00070BA56 /* SignUpViewModel.swift in Sources */,
 				30CA734E2B24AE460025B2EB /* SymbolsAnimations.swift in Sources */,
 				5598D3142B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift in Sources */,
 				5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */,
