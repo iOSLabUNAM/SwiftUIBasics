@@ -10,7 +10,7 @@ import Combine
 
 class SignUpViewModel: ObservableObject {
     // inputs
-    @Published var username: String = ""
+    @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirm: String = ""
 
@@ -20,17 +20,36 @@ class SignUpViewModel: ObservableObject {
     @Published var isValidPasswordUpperCase: Bool = false
     @Published var isValidPasswordMatch: Bool = false
     @Published var isValid: Bool = false
-
+    // New Rules
+    @Published var isValidPasswordSymbol : Bool = false
+    @Published var isValidPasswordNumber : Bool = false
+    @Published var isValidPasswordLowerCase : Bool = false
+    @Published var isValidEmail : Bool = false
+    
+    
     private var cancelableSet: Set<AnyCancellable> = []
 
     init() {
-        $username
+        $email
             .receive(on: RunLoop.main)
             .map { username in
                 return username.count >= 4
             }
             .assign(to: \.isValidUsernameLength, on: self)
             .store(in: &cancelableSet)
+        $email
+            .receive(on: RunLoop.main)
+            .map { password in
+                let pattern = "[@.]"
+                if let _ = password.range(of: pattern, options: .regularExpression) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            .assign(to: \.isValidEmail, on: self)
+            .store(in: &cancelableSet)
+
 
         $password
             .receive(on: RunLoop.main)
@@ -51,6 +70,45 @@ class SignUpViewModel: ObservableObject {
                 }
             }
             .assign(to: \.isValidPasswordUpperCase, on: self)
+            .store(in: &cancelableSet)
+
+        $password
+            .receive(on: RunLoop.main)
+            .map { password in
+                let pattern = "[a-z]"
+                if let _ = password.range(of: pattern, options: .regularExpression) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            .assign(to: \.isValidPasswordLowerCase, on: self)
+            .store(in: &cancelableSet)
+        
+        $password
+            .receive(on: RunLoop.main)
+            .map { password in
+                let pattern = "[0-9]"
+                if let _ = password.range(of: pattern, options: .regularExpression) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            .assign(to: \.isValidPasswordNumber, on: self)
+            .store(in: &cancelableSet)
+        
+        $password
+            .receive(on: RunLoop.main)
+            .map { password in
+                let pattern = "[!  # $ % & ' ( ) * + ,  -. / : ; < = > ? @ [ ] ^ _ ` { | }]"
+                if let _ = password.range(of: pattern, options: .regularExpression) {
+                    return true
+                } else {
+                    return false
+                }
+            }
+            .assign(to: \.isValidPasswordSymbol, on: self)
             .store(in: &cancelableSet)
 
         Publishers.CombineLatest($password, $passwordConfirm)
@@ -80,13 +138,19 @@ struct SignUpView: View {
                 .bold()
                 .foregroundStyle(.maryBlue)
                 .padding(.bottom, 30)
-            FormTextField(name: "Username", value: $vm.username)
-            RequirementText(text: "A minimum of 4 characters", isValid: vm.isValidUsernameLength)
+            FormTextField(name: "email", value: $vm.email)
+            VStack{
+                RequirementText(text: "A minimum of 4 characters", isValid: vm.isValidUsernameLength)
+                RequirementText(text: "Is email valid", isValid: vm.isValidEmail)
+            }
                 .padding()
             FormTextField(name: "Password", value: $vm.password, isSecure: true)
             VStack {
                 RequirementText(text: "A minimum of 8 characters", isValid: vm.isValidPasswordLength)
                 RequirementText(text: "One uppercase letter", isValid: vm.isValidPasswordUpperCase)
+                RequirementText(text: "One lowercase letter", isValid: vm.isValidPasswordLowerCase)
+                RequirementText(text: "One Number", isValid: vm.isValidPasswordNumber)
+                RequirementText(text: "One Symbol", isValid: vm.isValidPasswordSymbol)
             }
             .padding()
             FormTextField(name: "Confirm Password", value: $vm.passwordConfirm, isSecure: true)
