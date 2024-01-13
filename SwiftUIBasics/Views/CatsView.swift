@@ -41,7 +41,6 @@ struct CacheAsyncImage<Content>: View where Content: View {
 
     var body: some View {
         if let cached = ImageCache[url] {
-           let  _ = print("Rendering from cache at:\(url)")
             content(.success(cached))
         } else {
             AsyncImage(
