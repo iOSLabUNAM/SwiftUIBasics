@@ -22,6 +22,7 @@
 		5598D3222B2403CF00A6AFD3 /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3212B2403CE00A6AFD3 /* CircularImage.swift */; };
 		5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */; };
 		5598D3262B2404FC00A6AFD3 /* ProfileCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */; };
+		E63894902B2D0EF200B7D57C /* CatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E638948F2B2D0EF200B7D57C /* CatsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		5598D3212B2403CE00A6AFD3 /* CircularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardVM.swift; sourceTree = "<group>"; };
+		E638948F2B2D0EF200B7D57C /* CatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				5570428C2B24D8050048C81C /* SignUpView.swift */,
 				5570428E2B24E50E0048C81C /* RatingView.swift */,
 				557042902B24E5220048C81C /* PlansView.swift */,
+				E638948F2B2D0EF200B7D57C /* CatsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */,
 				557042952B24F3100048C81C /* RequirementText.swift in Sources */,
 				557042932B24EFB00048C81C /* FormTextField.swift in Sources */,
+				E63894902B2D0EF200B7D57C /* CatsView.swift in Sources */,
 				557042892B24CB310048C81C /* ProfileListView.swift in Sources */,
 				557042912B24E5220048C81C /* PlansView.swift in Sources */,
 				5570428D2B24D8050048C81C /* SignUpView.swift in Sources */,
