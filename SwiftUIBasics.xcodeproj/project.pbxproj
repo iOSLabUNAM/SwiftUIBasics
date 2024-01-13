@@ -24,6 +24,7 @@
 		5598D3222B2403CF00A6AFD3 /* CircularImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3212B2403CE00A6AFD3 /* CircularImage.swift */; };
 		5598D3242B24049B00A6AFD3 /* ProfileCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */; };
 		5598D3262B2404FC00A6AFD3 /* ProfileCardVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */; };
+		55E82E052B521C1D00A355F1 /* String+RegexMatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E82E042B521C1D00A355F1 /* String+RegexMatch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		5598D3212B2403CE00A6AFD3 /* CircularImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircularImage.swift; sourceTree = "<group>"; };
 		5598D3232B24049B00A6AFD3 /* ProfileCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardView.swift; sourceTree = "<group>"; };
 		5598D3252B2404FC00A6AFD3 /* ProfileCardVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCardVM.swift; sourceTree = "<group>"; };
+		55E82E042B521C1D00A355F1 /* String+RegexMatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "String+RegexMatch.swift"; path = "SwiftUIBasics/String+RegexMatch.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +117,7 @@
 				557042852B24CA790048C81C /* ViewModels */,
 				557042862B24CA860048C81C /* Views */,
 				5598D3132B23DF6D00A6AFD3 /* SwiftUIBasicsApp.swift */,
+				55E82E042B521C1D00A355F1 /* String+RegexMatch.swift */,
 				5598D3152B23DF6D00A6AFD3 /* ContentView.swift */,
 				5598D3172B23DF6F00A6AFD3 /* Assets.xcassets */,
 				5598D3192B23DF6F00A6AFD3 /* Preview Content */,
@@ -212,6 +215,7 @@
 				557042932B24EFB00048C81C /* FormTextField.swift in Sources */,
 				308440142B2D0A0C00291F2D /* CatsView.swift in Sources */,
 				557042892B24CB310048C81C /* ProfileListView.swift in Sources */,
+				55E82E052B521C1D00A355F1 /* String+RegexMatch.swift in Sources */,
 				557042912B24E5220048C81C /* PlansView.swift in Sources */,
 				5570428D2B24D8050048C81C /* SignUpView.swift in Sources */,
 				5598D3222B2403CF00A6AFD3 /* CircularImage.swift in Sources */,
