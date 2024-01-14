@@ -38,5 +38,5 @@ struct ProfileCardView: View {
 }
 
 #Preview {
-    ProfileCardView(vm: ProfileCardVM(image: "karen", name: "Karen Parsons", bio: "Real state agent and proud mom 🇺🇸", followers: 87))
+    ProfileCardView(vm: ProfileCardVM(image: "yo", name: "Paula Flores", bio: "Ingeniería en robar tu corazón ", followers: 87))
 }
