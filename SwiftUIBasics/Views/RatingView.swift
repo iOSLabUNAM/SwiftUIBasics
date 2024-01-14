@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct RatingView: View {
+    
+    @State private var rating = 0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Rating")
+        
+        HStack{
+            ForEach(1...5, id: \.self) { index in
+                Image(systemName: index <= rating ? "star.fill" : "star")
+                    .onTapGesture {
+                        if (rating.self == index){
+                            rating.self = 0
+                        } else {
+                            rating.self = index
+                        }
+                        
+                        print(rating)
+                    }
+                    
+            }
+        }
     }
 }
 
