@@ -8,25 +8,42 @@
 import SwiftUI
 
 struct RatingView: View {
-    @State var rating: Int = 0
+    
+    @State var rating: Int
+
+    var offImage = Image(systemName: "star")
+    var onImage = Image(systemName: "star.fill")
+
     var body: some View {
-        HStack{
-            ForEach((1..<6)) { idx in
-                Image(systemName: (rating >= idx) ? "star.fill": "star")
-                    .font(.title)
-                    .foregroundColor(.yellow)
-                    .onTapGesture {
-                        if rating == idx {
-                            rating = 0
-                        } else {
-                            rating = idx
+        VStack {
+            Text("Rate:")
+                .font(.system(size: 111))
+                .bold()
+            HStack{
+                ForEach(1..<6, id:\.self){ number in
+                    Image(systemName:
+                            image(for: number))
+                        .font(.system(size: 45))
+                        .foregroundColor(number > rating ?
+                                         Color.gray : Color.yellow)
+                        .onTapGesture {
+                            rating = number
                         }
-                    }
+                }
             }
         }
     }
+
 }
 
 #Preview {
-    RatingView()
+    RatingView(rating: 0)
+}
+
+func image(for number: Int) -> String {
+    if number <= 5 {
+        return "star"
+    } else {
+        return "star.fill"
+    }
 }
