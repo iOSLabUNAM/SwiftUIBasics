@@ -1,18 +1,31 @@
-//
-//  RatingView.swift
-//  SwiftUIBasics
-//
-//  Created by Diplomado on 09/12/23.
-//
-
 import SwiftUI
 
-struct RatingView: View {
+struct StarRatingView: View {
+    @State private var rating: Int = 0
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Selected Rating: \(rating)")
+
+            HStack {
+                ForEach(1...5, id: \.self) { index in
+                    Image(systemName: index <= self.rating ? "star.fill" : "star")
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .foregroundColor(.yellow)
+                        .onTapGesture {
+                            self.rating = index
+                        }
+                }
+            }
+        }
+        .padding()
     }
 }
 
-#Preview {
-    RatingView()
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        StarRatingView()
+    }
 }
+
