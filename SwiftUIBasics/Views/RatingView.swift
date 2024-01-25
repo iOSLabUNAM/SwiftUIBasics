@@ -1,5 +1,4 @@
 import SwiftUI
-
 struct StarRatingView: View {
     @State private var rating: Int = 0
 
