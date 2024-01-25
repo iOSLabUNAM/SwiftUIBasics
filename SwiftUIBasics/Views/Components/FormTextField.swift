@@ -11,6 +11,7 @@ struct FormTextField: View {
     var name = ""
     @Binding var value: String
     var isSecure = false
+    var fieldType: UIKeyboardType = .default
 
     var body: some View {
         VStack {
@@ -20,6 +21,7 @@ struct FormTextField: View {
                     .padding(.horizontal)
             } else {
                 TextField(name, text: $value)
+                    .keyboardType(fieldType)
                     .font(.system(size: 20, weight: .semibold, design: .rounded))
                     .padding(.horizontal)
             }
