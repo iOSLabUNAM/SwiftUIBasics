@@ -1,58 +1,90 @@
-//
-//  SignUpView.swift
-//  SwiftUIBasics
-//
-//  Created by Diplomado on 09/12/23.
-//
-
 import SwiftUI
 import Combine
 
 class SignUpViewModel: ObservableObject {
     // inputs
-    @Published var username: String = ""
+    @Published var email: String = ""
     @Published var password: String = ""
     @Published var passwordConfirm: String = ""
-
+    
     // outputs
-    @Published var isValidUsernameLength: Bool = false
-    @Published var isValidPasswordLength: Bool = false
-    @Published var isValidPasswordUpperCase: Bool = false
+    @Published var isValidEmail: Bool = false
+    @Published var isValidPassword: Bool = false
+    @Published var isValidPasswordLength = false
+    @Published var isValidPasswordUppercase = false
+    @Published var isValidPasswordLowercase = false
+    @Published var isValidPasswordSymbols = false
+    @Published var isValidPasswordDigits = false
     @Published var isValidPasswordMatch: Bool = false
     @Published var isValid: Bool = false
 
     private var cancelableSet: Set<AnyCancellable> = []
 
     init() {
-        $username
+        $email
             .receive(on: RunLoop.main)
-            .map { username in
-                return username.count >= 4
+            .map { email in
+                let emailPattern = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+                let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailPattern)
+                return emailPredicate.evaluate(with: email)
             }
-            .assign(to: \.isValidUsernameLength, on: self)
+            .assign(to: \.isValidEmail, on: self)
             .store(in: &cancelableSet)
-
+        
         $password
             .receive(on: RunLoop.main)
-            .map { password in
-                return password.count >= 8
+            .map {
+                $0.isValidLength()
             }
             .assign(to: \.isValidPasswordLength, on: self)
             .store(in: &cancelableSet)
 
         $password
             .receive(on: RunLoop.main)
-            .map { password in
-                let pattern = "[A-Z]"
-                if let _ = password.range(of: pattern, options: .regularExpression) {
-                    return true
-                } else {
-                    return false
-                }
+            .map {
+                $0.containsUppercase()
             }
-            .assign(to: \.isValidPasswordUpperCase, on: self)
+            .assign(to: \.isValidPasswordUppercase, on: self)
+            .store(in: &cancelableSet)
+        
+        $password
+            .receive(on: RunLoop.main)
+            .map {
+                $0.containsLowercase()
+            }
+            .assign(to: \.isValidPasswordLowercase, on: self)
+            .store(in: &cancelableSet)
+        
+        $password
+            .receive(on: RunLoop.main)
+            .map {
+                $0.containsSymbol()
+            }
+            .assign(to: \.isValidPasswordSymbols, on: self)
+            .store(in: &cancelableSet)
+        
+        $password
+            .receive(on: RunLoop.main)
+            .map {
+                $0.containsNumber()
+            }
+            .assign(to: \.isValidPasswordDigits, on: self)
             .store(in: &cancelableSet)
 
+        Publishers.CombineLatest4($isValidPasswordLength,$isValidPasswordUppercase, $isValidPasswordLowercase, $isValidPasswordSymbols)
+            .receive(on: RunLoop.main)
+            .map {
+                $0 && $1 && $2 && $3
+            }
+            .assign(to: \.isValidPassword, on: self)
+            .store(in: &cancelableSet)
+        
+        Publishers.CombineLatest($isValidPasswordDigits, $isValidPassword)
+            .receive(on: RunLoop.main)
+            .map { $0 && $1 }
+            .assign(to: \.isValidPassword, on: self)
+            .store(in: &cancelableSet)
+        
         Publishers.CombineLatest($password, $passwordConfirm)
             .receive(on: RunLoop.main)
             .map { (password, passwordConfirm) in
@@ -61,9 +93,9 @@ class SignUpViewModel: ObservableObject {
             .assign(to: \.isValidPasswordMatch, on: self)
             .store(in: &cancelableSet)
 
-        Publishers.CombineLatest4($isValidUsernameLength, $isValidPasswordLength, $isValidPasswordUpperCase, $isValidPasswordMatch)
-            .map { (a, b, c, d) in
-                return a && b && c && d
+        Publishers.CombineLatest3($isValidEmail, $isValidPassword, $isValidPasswordMatch)
+            .map { (a, b, c) in
+                return a && b && c
             }
             .assign(to: \.isValid, on: self)
             .store(in: &cancelableSet)
@@ -80,19 +112,26 @@ struct SignUpView: View {
                 .bold()
                 .foregroundStyle(.maryBlue)
                 .padding(.bottom, 30)
-            FormTextField(name: "Username", value: $vm.username)
-            RequirementText(text: "A minimum of 4 characters", isValid: vm.isValidUsernameLength)
+            FormTextField(name: "Email", value: $vm.email)
+                .keyboardType(.emailAddress)
+            RequirementText(text: "Valid email format", isValid: vm.isValidEmail)
                 .padding()
+
             FormTextField(name: "Password", value: $vm.password, isSecure: true)
             VStack {
-                RequirementText(text: "A minimum of 8 characters", isValid: vm.isValidPasswordLength)
-                RequirementText(text: "One uppercase letter", isValid: vm.isValidPasswordUpperCase)
+                RequirementText(text: "At least 8 characters", isValid: vm.isValidPasswordLength)
+                RequirementText(text: "At least one uppercase letter", isValid: vm.password.containsUppercase())
+                RequirementText(text: "At least one lowercase letter", isValid: vm.password.containsLowercase())
+                RequirementText(text: "At least one symbol", isValid: vm.password.containsSymbol())
+                RequirementText(text: "At least one number", isValid: vm.password.containsNumber())
             }
             .padding()
+
             FormTextField(name: "Confirm Password", value: $vm.passwordConfirm, isSecure: true)
             RequirementText(text: "Your confirm password should be the same as password", isValid: vm.isValidPasswordMatch)
                 .padding()
                 .padding(.bottom, 50)
+
             Button(action: {
                 print("Doing")
                 // Proceed to the next screen
@@ -104,7 +143,6 @@ struct SignUpView: View {
                     .padding()
                     .frame(minWidth: 0, maxWidth: .infinity)
                     .background(vm.isValid ? .maryBlue :.turquoise)
-                    // .background(LinearGradient(gradient: Gradient(colors: [.turquoise, .maryBlue]), startPoint: .leading, endPoint: .trailing))
                     .cornerRadius(10)
                     .padding(.horizontal)
             }
@@ -129,6 +167,31 @@ struct SignUpView: View {
     }
 }
 
-#Preview {
-    SignUpView()
+extension String {
+    func isValidLength() -> Bool {
+        return self.count >= 8
+    }
+
+    func containsUppercase() -> Bool {
+        return self.rangeOfCharacter(from: .uppercaseLetters) != nil
+    }
+
+    func containsLowercase() -> Bool {
+        return self.rangeOfCharacter(from: .lowercaseLetters) != nil
+    }
+
+    func containsSymbol() -> Bool {
+        let symbolCharacterSet = CharacterSet(charactersIn: "!@#$%^&*()-_=+[]{}|;:'\",.<>/?`~")
+        return self.rangeOfCharacter(from: symbolCharacterSet) != nil
+    }
+
+    func containsNumber() -> Bool {
+        return self.rangeOfCharacter(from: .decimalDigits) != nil
+    }
+}
+
+struct SignUpView_Previews: PreviewProvider {
+    static var previews: some View {
+        SignUpView()
+    }
 }
