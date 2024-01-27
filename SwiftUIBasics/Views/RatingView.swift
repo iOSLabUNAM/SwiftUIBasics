@@ -23,8 +23,6 @@ struct RatingView: View {
     }
 }
 
-struct RatingView_Previews: PreviewProvider {
-    static var previews: some View {
-        RatingView()
-    }
+#Preview {
+    RatingView()
 }
