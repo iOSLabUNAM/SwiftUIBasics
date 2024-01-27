@@ -95,7 +95,7 @@ class SignUpViewModel: ObservableObject {
         $password
             .receive(on: RunLoop.main)
             .map { password in
-                let pattern = "[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]"
+                let pattern = "[\\W]"
                 if let _ = password.range(of: pattern, options: .regularExpression) {
                     return true
                 } else {
