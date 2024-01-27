@@ -17,7 +17,12 @@ struct StartRaiting : View {
                 Image(systemName: index <= raiting ? "star.fill" : "star" )
                     .foregroundStyle(.yellow)
                 .onTapGesture {
-                    raiting = index
+                    if (raiting == index){
+                        raiting = 0
+                    }else {
+                        raiting = index
+                    }
+                    
                 }
             }
         }
