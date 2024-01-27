@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct RatingView: View {
-    @State var selected = 0
+    @State var selected = -1
     var body: some View {
         Text("Rating Star")
             .padding()
@@ -18,16 +18,12 @@ struct RatingView: View {
                 Image(systemName: i <= selected ? "star.fill":"star")
                     .resizable()
                     .foregroundStyle(i <= selected ? .yellow:.black)
-                    .frame(width: 40,height: 40).onTapGesture {
-                        selected = i
-                        
+                    .frame(width: 40,height: 40)
+                    .onTapGesture {
+                      i != selected ? (selected=i) : (selected = -1)         
                     }
-            }
-            
-            
-        }
-        
-        
+            }   
+        }        
     }
 }
 
